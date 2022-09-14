@@ -7,7 +7,10 @@ const App = () => {
 
     return (
         <div className="AppMain">
-
+            {/* <div className="">for absolute items</div> */}
+            <div className="TopHdr">
+                <h2>Testimonials</h2>
+            </div>
         </div>
     )
 }
