@@ -1,5 +1,8 @@
-import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
+// import { motion } from 'framer-motion';
+// import { gsap } from 'gsap';
+import { FaLongArrowAltLeft } from "react-icons/fa";
+import { FaLongArrowAltRight } from "react-icons/fa";
+
 
 import ImgComp from '../Img/ImgComp';
 import DtsComp from '../Dts/DtsComp';
@@ -60,10 +63,10 @@ const App = () => {
                             })}
                         </div>
                     </div>
-                </div>
-                <div className="btnCvr">
-                    <button>l</button>
-                    <button>r</button>
+                    <div className="btnCvr">
+                        <button className="left"><FaLongArrowAltLeft /></button>
+                        <button className="right"><FaLongArrowAltRight /></button>
+                    </div>
                 </div>
             </div>
             <div className="BuildHold">

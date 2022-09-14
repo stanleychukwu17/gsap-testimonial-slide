@@ -1,6 +1,6 @@
 @forward '../../styles/globals/';
 @use '../../styles/util/' as u1;
-
+@use "sass:math";
 
 
 .test1 {
@@ -52,10 +52,11 @@ body {
 
 .slidesSection {
     width: 1050px;
-    margin: 10px auto 100px;
+    margin: 20px auto 100px;
 
     .sld_mid_cvr {
         display: flex;
+        z-index: 1;
 
         .ImgParOvr {
             display: flex;
@@ -69,6 +70,40 @@ body {
             margin: 0 0 0 30px;
         }
     }
+
+    .btnCvr {
+        position: absolute !important;
+        top: 0;
+        right: -100px;
+        left: -100px;
+        bottom: 0;
+        z-index: 0;
+    
+        button {
+            width: 52px;
+            height: 52px;
+            line-height: 52px;
+            border-radius: 80px;
+            text-align: center;
+            background-color: #e8f0d5;
+            position: absolute;
+            top: math.div(400, 2) + px;
+            cursor: pointer;
+            border: 2px solid #2a1b1d;
+            transition: all .2s ease-out;
+
+    
+            &.right {
+                right: 0;
+            }
+
+            &:hover {
+                background-color: #fcd30c;
+                border-color: #e8f0d5;
+            }
+        }
+    }
+    
 }
 
 
