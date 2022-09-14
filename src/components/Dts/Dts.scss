@@ -1,0 +1,12 @@
+.DtsEchOne {
+    background-color: #e8f0d5;
+    border-radius: 5px;
+    padding: 20px 30px;
+    margin: 10px 0;
+    box-shadow: 3px 3px 0 rgba(252,211,12, 1), 6px 6px 0 rgba(42,27,29, 1),
+                -3px -3px 0 rgba(252,211,12, 1), -6px -6px 0 rgba(42,27,29, 1);
+
+    > div {
+        padding: 5px 0;
+    }
+}

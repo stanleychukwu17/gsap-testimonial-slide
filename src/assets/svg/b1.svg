@@ -1,0 +1,63 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fbd30c;
+      }
+
+      .cls-2 {
+        fill: #e8efd4;
+      }
+    </style>
+  </defs>
+  <g id="build">
+    <rect x="660.37" y="412.74" width="90.38" height="307.26"/>
+    <rect class="cls-1" x="663.94" y="415.47" width="83.74" height="304.53"/>
+    <rect class="cls-2" x="668.03" y="418.2" width="74.55" height="301.8"/>
+  </g>
+  <g id="build-2" data-name="build">
+    <rect x="791.49" y="510.79" width="90.38" height="209.21"/>
+    <rect class="cls-1" x="795.07" y="512.64" width="83.74" height="207.36"/>
+    <rect class="cls-2" x="799.15" y="514.5" width="74.55" height="205.5"/>
+  </g>
+  <g id="build-3" data-name="build">
+    <rect x="922.62" y="223.81" width="90.38" height="496.19"/>
+    <rect class="cls-1" x="926.19" y="228.21" width="83.74" height="491.79"/>
+    <rect class="cls-2" x="930.28" y="232.61" width="74.55" height="487.39"/>
+  </g>
+  <g id="build-4" data-name="build">
+    <rect x="4.76" y="223.81" width="90.38" height="496.19"/>
+    <rect class="cls-1" x="8.33" y="228.21" width="83.74" height="491.79"/>
+    <rect class="cls-2" x="12.41" y="232.61" width="74.55" height="487.39"/>
+  </g>
+  <g id="build-5" data-name="build">
+    <rect x="1053.74" y="379.04" width="90.38" height="340.96"/>
+    <rect class="cls-1" x="1057.31" y="382.07" width="83.74" height="337.93"/>
+    <rect class="cls-2" x="1061.4" y="385.09" width="74.55" height="334.91"/>
+  </g>
+  <g id="build-6" data-name="build">
+    <rect x="1184.86" y="202.36" width="90.38" height="517.64"/>
+    <rect class="cls-1" x="1188.44" y="206.95" width="83.74" height="513.05"/>
+    <rect class="cls-2" x="1192.52" y="211.55" width="74.55" height="508.45"/>
+  </g>
+  <g id="build-7" data-name="build">
+    <rect x="529.25" y="250.36" width="90.38" height="469.64"/>
+    <rect class="cls-1" x="532.82" y="254.53" width="83.74" height="465.47"/>
+    <rect class="cls-2" x="536.91" y="258.7" width="74.55" height="461.3"/>
+  </g>
+  <g id="build-8" data-name="build">
+    <rect x="398.12" y="335.13" width="90.38" height="384.87"/>
+    <rect class="cls-1" x="401.7" y="338.54" width="83.74" height="381.46"/>
+    <rect class="cls-2" x="405.78" y="341.96" width="74.55" height="378.04"/>
+  </g>
+  <g id="build-9" data-name="build">
+    <rect x="267" y="493.86" width="90.38" height="226.14"/>
+    <rect class="cls-1" x="270.58" y="497.51" width="83.74" height="222.49"/>
+    <rect class="cls-2" x="274.66" y="500.91" width="74.55" height="219.09"/>
+  </g>
+  <g id="build-10" data-name="build">
+    <rect x="135.88" y="321.85" width="90.38" height="398.15"/>
+    <rect class="cls-1" x="139.45" y="325.38" width="83.74" height="394.62"/>
+    <rect class="cls-2" x="143.54" y="328.92" width="74.55" height="391.08"/>
+  </g>
+</svg>

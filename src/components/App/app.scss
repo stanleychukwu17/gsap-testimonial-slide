@@ -38,6 +38,7 @@ body {
 .AppMain {
     @include u1.block_display();
     color: #2a1b1d;
+    min-height: clamp(800px, 100vh, 5000px);
 
     div { position: relative; }
 }
@@ -50,13 +51,42 @@ body {
 }
 
 .slidesSection {
-    width: 750px;
+    width: 1050px;
     margin: 10px auto 100px;
 
-    .ImgParOvr {
+    .sld_mid_cvr {
         display: flex;
-        overflow: hidden;
-        width: var(--imgWidth);
-        height: var(--imgWidth);
+
+        .ImgParOvr {
+            display: flex;
+            overflow: hidden;
+            min-width: var(--imgWidth);
+            height: var(--imgWidth);
+        }
+
+        .DtsParOvr {
+            min-width: 600px;
+            margin: 0 0 0 30px;
+        }
+    }
+}
+
+
+.BuildHold {
+    width: 500px;
+    // height: 300px;
+    position: absolute !important;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    top: auto;
+    // background-color: aqua;
+    // display: none;
+
+    img {
+        position: relative;
+        max-width: 100%;
+        top: 2px;
     }
 }
