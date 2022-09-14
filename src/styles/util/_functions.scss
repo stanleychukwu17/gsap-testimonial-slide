@@ -32,7 +32,12 @@
     }
 };
 
-// margin: rem(35) rem(35) rem(100);
+// for flex displays
+@mixin flex_display($jt: 'space-between') {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+};
 
 @mixin neo_button() {
     position: relative;
@@ -46,7 +51,7 @@
     background: linear-gradient(145deg, #dddde1, #ffffff);
     box-shadow:  20px 20px 60px #d0d1d5,
                  -20px -20px 60px #ffffff;
-    // transition: all .5s ease-out;
+    transition: all .5s ease-out;
 
 
     a {
