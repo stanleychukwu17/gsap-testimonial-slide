@@ -31,6 +31,10 @@
 body {
     background-color: #fcd30c !important;
 }
+:root {
+    --imgWidth: 400px;
+}
+
 .AppMain {
     @include u1.block_display();
     color: #2a1b1d;
@@ -43,4 +47,16 @@ body {
     font-size: clamp(15px, 40px + 2vw, 130px);
     letter-spacing: 3px;
     text-shadow: 2px 2px 0 rgba(252,211,12, 1), 8px 8px 0 rgba(42,27,29, 1);
+}
+
+.slidesSection {
+    width: 750px;
+    margin: 10px auto 100px;
+
+    .ImgParOvr {
+        display: flex;
+        overflow: hidden;
+        width: var(--imgWidth);
+        height: var(--imgWidth);
+    }
 }

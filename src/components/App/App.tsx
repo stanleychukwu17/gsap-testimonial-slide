@@ -43,11 +43,13 @@ const App = () => {
             {/* <div className="">for absolute items</div> */}
             <div className="">
                 <div className="TopHdr"><h2>Testimonials</h2></div>
-                <div className="">
+                <div className="slidesSection">
                     <div className="">
-                        {slides.map((item: slideProps) => {
-                            return <ImgComp {...item} />
-                        })}
+                        <div className="ImgParOvr">
+                            {slides.map((item: slideProps, index: number) => {
+                                return <ImgComp key={index} {...item} />
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

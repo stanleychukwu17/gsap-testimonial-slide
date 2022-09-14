@@ -1,6 +1,15 @@
 @use '../../styles/util/' as u1;
 
 
-.imgMainCvr {
-    display: flex;
+.imgEchOne {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    min-width: var(--imgWidth);
+    height: var(--imgWidth);
+
+    img {
+        width: var(--imgWidth);
+        height: var(--imgWidth);
+    }
 }
