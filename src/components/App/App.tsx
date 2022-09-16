@@ -16,6 +16,7 @@ import slide3 from '../../assets/images/slide3.jpg'
 import building from '../../assets/svg/b1.svg'
 import main_bg from '../../assets/svg/mbg.svg'
 import cp1 from '../../assets/svg/cp1.svg'
+import av1 from '../../assets/avatar/av1.jpg'
 
 // constants to be used inside the App component
 import { slideProps } from '../../types/general.types';
@@ -25,7 +26,7 @@ const slides: slideProps[] = [
         img: slide1,
         name: '',
         position: '',
-        avatar: '',
+        avatar: av1,
         details: 'An amazing product'
     },
     {
