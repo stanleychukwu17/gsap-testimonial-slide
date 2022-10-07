@@ -3,10 +3,15 @@
 
 .imgEchOne {
     display: block;
+    position: absolute !important;
     overflow: hidden;
-    position: relative;
     min-width: var(--imgWidth);
     height: var(--imgWidth);
+    left: var(--imgWidth);
+    z-index: 0;
+    &:nth-child(1) {
+        left: 0;
+    }
 
     img {
         width: var(--imgWidth);

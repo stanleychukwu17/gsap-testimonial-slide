@@ -23,7 +23,6 @@ import av1 from '../../assets/avatar/av1.jpg'
 import { slideProps } from '../../types/general.types';
 
 
-
 const slides: slideProps[] = [
     {
         img: slide1,
@@ -49,21 +48,20 @@ const slides: slideProps[] = [
 ]
 const App = () => {
     const currentSlide = useRef<number>(1)
+    const zzIndex = useRef<number>(0)
 
     const backward = useCallback(() => {
         currentSlide.current--
-        console.log(currentSlide)
+        if (currentSlide.current < 1) { currentSlide.current = slides.length; }
+
+        gsap.fromTo(`.img${currentSlide.current}`, {left:-400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:1})
     }, [])
 
     const forward = useCallback(() => {
         currentSlide.current++
+        if (currentSlide.current > slides.length) { currentSlide.current = 1; }
 
-        if (currentSlide.current > slides.length) {
-            currentSlide.current = 1
-        }
-
-        gsap.fromTo(`.img${currentSlide.current}`, {left:400}, {left:-400, duration:1})
-        console.log(currentSlide)
+        gsap.fromTo(`.img${currentSlide.current}`, {left:400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:1})
     }, [])
 
     const keyboardIsPressed = useCallback((ev: KeyboardEvent) => {
