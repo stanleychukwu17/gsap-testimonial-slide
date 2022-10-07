@@ -2,6 +2,11 @@
     width: 620px;
     position: absolute !important;
     z-index: 0;
+    top: -400px;
+    &:nth-child(1) {
+        z-index: 1;
+        top: 0;
+    }
 
     .DtsEch1st {
         background-color: #e8f0d5;

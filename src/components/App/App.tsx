@@ -45,8 +45,11 @@ const slides: slideProps[] = [
 const App = () => {
     const currentSlide = useRef<number>(1)
     const zzIndex = useRef<number>(0)
+    const lock = useRef<boolean|null>(null)
 
     const backward = useCallback(() => {
+        if (lock.current) { return }
+        lock.current = true
         const curImg = `.img${currentSlide.current}`
         const curDts = `.dts${currentSlide.current}`
 
@@ -56,17 +59,19 @@ const App = () => {
 
         // animates the current item out
         gsap.to(curImg, {left:400, duration:1.2})
-        gsap.to(curDts, {y:295, opacity:0, duration:.5})
+        gsap.to(curDts, {top:295, opacity:0, duration:.5})
 
 
         // animates the next item in
         const nextImg = `.img${currentSlide.current}`
         const nextDts = `.dts${currentSlide.current}`
         gsap.fromTo(nextImg, {left:-400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
-        gsap.fromTo(nextDts, {y:-295, opacity:1, zIndex:++zzIndex.current}, {y:0, duration:.5})
+        gsap.fromTo(nextDts, {top:-295, opacity:1, zIndex:++zzIndex.current}, {top:0, duration:.5, onComplete:() => {lock.current = false} })
     }, [])
 
     const forward = useCallback(() => {
+        if (lock.current) { return }
+        lock.current = true
         const curImg = `.img${currentSlide.current}`
         const curDts = `.dts${currentSlide.current}`
 
@@ -76,14 +81,14 @@ const App = () => {
 
         // animates the current item out
         gsap.to(curImg, {left:-400, duration:1.2})
-        gsap.to(curDts, {y:-295, opacity:0, duration:.5})
+        gsap.to(curDts, {top:-295, opacity:0, duration:.5})
 
 
         // animates the next item in
         const nextImg = `.img${currentSlide.current}`
         const nextDts = `.dts${currentSlide.current}`
         gsap.fromTo(nextImg, {left:400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
-        gsap.fromTo(nextDts, {y:295, opacity:1, zIndex:++zzIndex.current}, {y:0, duration:.5})
+        gsap.fromTo(nextDts, {top:295, opacity:1, zIndex:++zzIndex.current}, {top:0, duration:.5, onComplete:() => {lock.current = false} })
     }, [])
 
     const keyboardIsPressed = useCallback((ev: KeyboardEvent) => {
@@ -98,8 +103,16 @@ const App = () => {
 
     // adds the keyboard event for sliding through images
     useEffect(() => {
-        window.addEventListener('keydown', keyboardIsPressed)
+        // animates all the items in
+        gsap.fromTo('.TopHdr', {y:-10}, {y:0, opacity:1, duration:.5}) // header
+        gsap.fromTo('.left', {x:-20}, {x:0, opacity:1, delay:.5, duration:.5}) // left buttons
+        gsap.fromTo('.right', {x:20}, {x:0, opacity:1, delay:.5, duration:.5}) // right buttons
+        gsap.fromTo('.ImgParOvr', {y:10, opacity:0}, {y:0, opacity:1, delay:.2, duration:.5}) // image cover
+        gsap.fromTo('.patternCvr', {x:10, opacity:0}, {x:0, opacity:1, delay:.5, duration:1}) // circle pattern
+        gsap.to('.patternCvr',  {rotate: +360, transformOrigin:'center', delay:1.5, duration:10, repeat: -1, ease:"none"}) // circle pattern
+        gsap.fromTo('.DtsParOvr', {y:-10, opacity:0}, {y:0, opacity:1, delay:.2, duration:.5}) // details cover
 
+        window.addEventListener('keydown', keyboardIsPressed)
         return () => { window.removeEventListener('keydown', keyboardIsPressed) }
     }, [keyboardIsPressed])
     
@@ -111,9 +124,7 @@ const App = () => {
                 <div className="TopHdr"><h2>Testimonials</h2></div>
                 <div className="slidesSection">
                     <div className="sld_mid_cvr">
-                        <div className="patternCvr">
-                            <img src={cp1} alt="" />
-                        </div>
+                        <div className="patternCvr"> <img src={cp1} alt="" /> </div>
                         <div className="ImgParOvr">
                             {slides.map((item: slideProps, index: number) => {
                                 return <ImgComp key={index} num={index + 1} {...item} />
