@@ -50,14 +50,23 @@ const App = () => {
         currentSlide.current--
         if (currentSlide.current < 1) { currentSlide.current = slides.length; }
 
-        gsap.fromTo(`.img${currentSlide.current}`, {left:-400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:1})
+        // animates the current item out
+
+
+        // animates the next item in
+        gsap.fromTo(`.img${currentSlide.current}`, {left:-400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
+        gsap.fromTo(`.dts${currentSlide.current}`, {y:-295, zIndex:++zzIndex.current}, {y:0, duration:.5})
     }, [])
 
     const forward = useCallback(() => {
         currentSlide.current++
         if (currentSlide.current > slides.length) { currentSlide.current = 1; }
 
-        gsap.fromTo(`.img${currentSlide.current}`, {left:400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:1})
+        // animates the current item out
+    
+        // animates the next item in
+        gsap.fromTo(`.img${currentSlide.current}`, {left:400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
+        gsap.fromTo(`.dts${currentSlide.current}`, {y:295, zIndex:++zzIndex.current}, {y:0, duration:.5})
     }, [])
 
     const keyboardIsPressed = useCallback((ev: KeyboardEvent) => {
