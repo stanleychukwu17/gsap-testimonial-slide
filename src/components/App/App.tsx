@@ -1,5 +1,6 @@
 // import { motion } from 'framer-motion';
 // import { gsap } from 'gsap';
+import { useCallback, useEffect } from "react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -21,7 +22,6 @@ import av1 from '../../assets/avatar/av1.jpg'
 
 // constants to be used inside the App component
 import { slideProps } from '../../types/general.types';
-import { useCallback } from "react";
 
 
 
@@ -50,7 +50,6 @@ const slides: slideProps[] = [
 ]
 const App = () => {
 
-
     const backward = useCallback(() => {
         console.log('i was called to go back')
     }, [])
@@ -58,6 +57,13 @@ const App = () => {
     const forward = useCallback(() => {
         console.log('i was called to go front')
     }, [])
+
+    useEffect(() => {
+    
+      return () => {
+      }
+    }, [])
+    
     
     return (
         <div className="AppMain">
