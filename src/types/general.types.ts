@@ -4,5 +4,4 @@ export type slideProps = {
     name: string,
     position: string,
     avatar: string,
-    details: string,
 }

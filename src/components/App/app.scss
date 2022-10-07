@@ -28,7 +28,7 @@ body {
     }
     
     .slidesSection {
-        width: 1050px;
+        width: 1080px;
         margin: 20px auto 100px;
     
         .sld_mid_cvr {
@@ -52,8 +52,11 @@ body {
             }
     
             .DtsParOvr {
-                min-width: 600px;
+                min-width: 620px;
+                height: 295px;
+                overflow: hidden;
                 margin: 0 0 0 30px;
+                padding: 0 10px;
             }
         }
     
