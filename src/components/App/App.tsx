@@ -1,4 +1,4 @@
-// import { gsap } from 'gsap';
+import { gsap } from 'gsap';
 import { useCallback, useEffect, useRef } from "react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
@@ -48,14 +48,22 @@ const slides: slideProps[] = [
     },
 ]
 const App = () => {
-    const currentNumber = useRef<number>(1)
+    const currentSlide = useRef<number>(1)
 
     const backward = useCallback(() => {
-        console.log('i was called to go back')
+        currentSlide.current--
+        console.log(currentSlide)
     }, [])
 
     const forward = useCallback(() => {
-        console.log('i was called to go front')
+        currentSlide.current++
+
+        if (currentSlide.current > slides.length) {
+            currentSlide.current = 1
+        }
+
+        gsap.fromTo(`.img${currentSlide.current}`, {left:400}, {left:-400, duration:1})
+        console.log(currentSlide)
     }, [])
 
     const keyboardIsPressed = useCallback((ev: KeyboardEvent) => {
@@ -87,7 +95,7 @@ const App = () => {
                         </div>
                         <div className="ImgParOvr">
                             {slides.map((item: slideProps, index: number) => {
-                                return <ImgComp key={index} {...item} />
+                                return <ImgComp key={index} num={index + 1} {...item} />
                             })}
                         </div>
                         <div className="DtsParOvr">

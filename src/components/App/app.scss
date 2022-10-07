@@ -2,32 +2,6 @@
 @use '../../styles/util/' as u1;
 @use "sass:math";
 
-
-.test1 {
-    @include u1.media(">=desktop") {
-        background-color: yellow;
-
-        &::after {
-            content: "desktop"
-        }
-    }
-    @include u1.media(">=tablet", "<desktop") {
-        background-color: skyblue;
-
-        &::after {
-            content: "tablet"
-        }
-    }
-
-    @include u1.media(">=phone", "<tablet") {
-        background-color: aquamarine;
-
-        &::after {
-            content: "phone"
-        }
-    }
-}
-
 body {
     background-color: #fcd30c !important;
 }
