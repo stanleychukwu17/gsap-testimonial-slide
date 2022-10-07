@@ -3,10 +3,11 @@
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-
+// importing of sub-components
 import ImgComp from '../Img/ImgComp';
 import DtsComp from '../Dts/DtsComp';
 
+// importing of stylesheets
 import './app.scss';
 
 // import the needed images
@@ -20,6 +21,9 @@ import av1 from '../../assets/avatar/av1.jpg'
 
 // constants to be used inside the App component
 import { slideProps } from '../../types/general.types';
+import { useCallback } from "react";
+
+
 
 const slides: slideProps[] = [
     {
@@ -46,6 +50,15 @@ const slides: slideProps[] = [
 ]
 const App = () => {
 
+
+    const backward = useCallback(() => {
+        console.log('i was called to go back')
+    }, [])
+
+    const forward = useCallback(() => {
+        console.log('i was called to go front')
+    }, [])
+    
     return (
         <div className="AppMain">
             {/* <div className="">for absolute items</div> */}
@@ -70,8 +83,8 @@ const App = () => {
                         </div>
                     </div>
                     <div className="btnCvr">
-                        <button className="left"><FaLongArrowAltLeft /></button>
-                        <button className="right"><FaLongArrowAltRight /></button>
+                        <button className="left" onClick={backward}><FaLongArrowAltLeft /></button>
+                        <button className="right" onClick={forward}><FaLongArrowAltRight /></button>
                     </div>
                 </div>
             </div>
