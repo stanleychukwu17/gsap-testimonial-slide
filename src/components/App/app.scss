@@ -47,8 +47,9 @@ body {
             .ImgParOvr {
                 display: flex;
                 overflow: hidden;
-                min-width: var(--imgWidth);
+                width: var(--imgWidth);
                 height: var(--imgWidth);
+                border-radius: 14px;
             }
     
             .DtsParOvr {

@@ -47,26 +47,43 @@ const App = () => {
     const zzIndex = useRef<number>(0)
 
     const backward = useCallback(() => {
+        const curImg = `.img${currentSlide.current}`
+        const curDts = `.dts${currentSlide.current}`
+
         currentSlide.current--
         if (currentSlide.current < 1) { currentSlide.current = slides.length; }
 
+
         // animates the current item out
+        gsap.to(curImg, {left:400, duration:1.2})
+        gsap.to(curDts, {y:295, opacity:0, duration:.5})
 
 
         // animates the next item in
-        gsap.fromTo(`.img${currentSlide.current}`, {left:-400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
-        gsap.fromTo(`.dts${currentSlide.current}`, {y:-295, zIndex:++zzIndex.current}, {y:0, duration:.5})
+        const nextImg = `.img${currentSlide.current}`
+        const nextDts = `.dts${currentSlide.current}`
+        gsap.fromTo(nextImg, {left:-400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
+        gsap.fromTo(nextDts, {y:-295, opacity:1, zIndex:++zzIndex.current}, {y:0, duration:.5})
     }, [])
 
     const forward = useCallback(() => {
+        const curImg = `.img${currentSlide.current}`
+        const curDts = `.dts${currentSlide.current}`
+
         currentSlide.current++
         if (currentSlide.current > slides.length) { currentSlide.current = 1; }
 
+
         // animates the current item out
-    
+        gsap.to(curImg, {left:-400, duration:1.2})
+        gsap.to(curDts, {y:-295, opacity:0, duration:.5})
+
+
         // animates the next item in
-        gsap.fromTo(`.img${currentSlide.current}`, {left:400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
-        gsap.fromTo(`.dts${currentSlide.current}`, {y:295, zIndex:++zzIndex.current}, {y:0, duration:.5})
+        const nextImg = `.img${currentSlide.current}`
+        const nextDts = `.dts${currentSlide.current}`
+        gsap.fromTo(nextImg, {left:400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
+        gsap.fromTo(nextDts, {y:295, opacity:1, zIndex:++zzIndex.current}, {y:0, duration:.5})
     }, [])
 
     const keyboardIsPressed = useCallback((ev: KeyboardEvent) => {
@@ -79,6 +96,7 @@ const App = () => {
         }
     }, [backward, forward])
 
+    // adds the keyboard event for sliding through images
     useEffect(() => {
         window.addEventListener('keydown', keyboardIsPressed)
 
