@@ -98,9 +98,7 @@ const App = () => {
                         </div>
                         <div className="DtsParOvr">
                             {slides.map((item: slideProps, index: number) => {
-                                if (index <= 0) {
-                                    return <DtsComp key={index} {...item} />
-                                }
+                                return <DtsComp key={index} num={index + 1} {...item} />
                             })}
                         </div>
                     </div>
