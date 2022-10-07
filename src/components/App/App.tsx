@@ -1,6 +1,5 @@
-// import { motion } from 'framer-motion';
 // import { gsap } from 'gsap';
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -49,6 +48,7 @@ const slides: slideProps[] = [
     },
 ]
 const App = () => {
+    const currentNumber = useRef<number>(1)
 
     const backward = useCallback(() => {
         console.log('i was called to go back')
@@ -58,11 +58,21 @@ const App = () => {
         console.log('i was called to go front')
     }, [])
 
+    const keyboardIsPressed = useCallback((ev: KeyboardEvent) => {
+        const keyCode = ev.code
+
+        if (keyCode === 'ArrowRight') {
+            forward()
+        } else if (keyCode === 'ArrowLeft') {
+            backward()
+        }
+    }, [backward, forward])
+
     useEffect(() => {
-    
-      return () => {
-      }
-    }, [])
+        window.addEventListener('keydown', keyboardIsPressed)
+
+        return () => { window.removeEventListener('keydown', keyboardIsPressed) }
+    }, [keyboardIsPressed])
     
     
     return (
