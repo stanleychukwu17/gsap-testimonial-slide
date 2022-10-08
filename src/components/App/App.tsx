@@ -79,14 +79,12 @@ const App = () => {
         // grabs the curren slide and animates it out
         const curImg = `.img${currentSlide.current}`
         const curDts = `.dts${currentSlide.current}`
-
-        currentSlide.current++
-        if (currentSlide.current > slides.length) { currentSlide.current = 1; }
-
-
-        // animates the current item out
         gsap.to(curImg, {left:-400, duration:1.2})
         gsap.to(curDts, {top:-295, opacity:0, duration:.5})
+
+        // workings to allow me grab the next slide
+        currentSlide.current++
+        if (currentSlide.current > slides.length) { currentSlide.current = 1; }
 
 
         // animates the next item in
@@ -96,6 +94,7 @@ const App = () => {
         gsap.fromTo(nextDts, {top:295, opacity:1, zIndex:++zzIndex.current}, {top:0, duration:.5, onComplete:() => {lock.current = false} })
     }, [])
 
+    // tracks on keyDown event, so we can use the arrow key to switch slides
     const keyboardIsPressed = useCallback((ev: KeyboardEvent) => {
         const keyCode = ev.code
 
@@ -114,7 +113,7 @@ const App = () => {
         gsap.fromTo('.right', {x:20}, {x:0, opacity:1, delay:.5, duration:.5}) // right buttons
         gsap.fromTo('.ImgParOvr', {y:10, opacity:0}, {y:0, opacity:1, delay:.2, duration:.5}) // image cover
         gsap.fromTo('.patternCvr', {x:10, opacity:0}, {x:0, opacity:1, delay:.5, duration:1}) // circle pattern
-        gsap.to('.patternCvr',  {rotate: +360, transformOrigin:'center', delay:1.5, duration:10, repeat: -1, ease:"none"}) // circle pattern
+        gsap.to('.patternCvr', {rotate: +360, transformOrigin:'center', delay:1.5, duration:10, repeat: -1, ease:"none"}) // circle pattern
         gsap.fromTo('.DtsParOvr', {y:-10, opacity:0}, {y:0, opacity:1, delay:.2, duration:.5}) // details cover
 
         window.addEventListener('keydown', keyboardIsPressed)
@@ -147,6 +146,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
+
             <div className="absoluteCovers">
                 <div className="mainBg">
                     <img src={main_bg} alt="" />
