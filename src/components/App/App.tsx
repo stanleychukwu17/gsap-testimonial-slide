@@ -10,7 +10,10 @@ import DtsComp from '../Dts/DtsComp';
 // importing of stylesheets
 import './app.scss';
 
-// import the needed images
+// importing of types
+import { slideProps } from '../../types/general.types';
+
+// import the needed images and svg's
 import slide1 from '../../assets/images/slide1.jpg'
 import slide2 from '../../assets/images/slide2.jpg'
 import slide3 from '../../assets/images/slide3.jpg'
@@ -18,10 +21,8 @@ import building from '../../assets/svg/b1.svg'
 import main_bg from '../../assets/svg/mbg.svg'
 import cp1 from '../../assets/svg/cp1.svg'
 
-// constants to be used inside the App component
-import { slideProps } from '../../types/general.types';
 
-
+// the slides holds all of the (images and details) of each slider
 const slides: slideProps[] = [
     {
         img: slide1,
@@ -43,35 +44,39 @@ const slides: slideProps[] = [
     },
 ]
 const App = () => {
-    const currentSlide = useRef<number>(1)
-    const zzIndex = useRef<number>(0)
-    const lock = useRef<boolean|null>(null)
+    const currentSlide = useRef<number>(1) // used to track the current slide
+    const zzIndex = useRef<number>(0) // used to continuously increase the z-index of the currentSlide Element, so that the current slide will always be onTop
+    const lock = useRef<boolean|null>(null) // if lock is true, no new animation request is accepted.
 
+    // slides the images backward
     const backward = useCallback(() => {
         if (lock.current) { return }
         lock.current = true
+
+        // grabs the curren slide and animates it out
         const curImg = `.img${currentSlide.current}`
         const curDts = `.dts${currentSlide.current}`
-
-        currentSlide.current--
-        if (currentSlide.current < 1) { currentSlide.current = slides.length; }
-
-
-        // animates the current item out
         gsap.to(curImg, {left:400, duration:1.2})
         gsap.to(curDts, {top:295, opacity:0, duration:.5})
 
+        // workings to allow me grab the next slide
+        currentSlide.current--
+        if (currentSlide.current < 1) { currentSlide.current = slides.length; }
 
-        // animates the next item in
+        // animates the next slide in
         const nextImg = `.img${currentSlide.current}`
         const nextDts = `.dts${currentSlide.current}`
         gsap.fromTo(nextImg, {left:-400, scale:1.2, zIndex:++zzIndex.current}, {left:0, scale:1, duration:.5})
         gsap.fromTo(nextDts, {top:-295, opacity:1, zIndex:++zzIndex.current}, {top:0, duration:.5, onComplete:() => {lock.current = false} })
     }, [])
 
+
+    // slides the images forward
     const forward = useCallback(() => {
         if (lock.current) { return }
         lock.current = true
+
+        // grabs the curren slide and animates it out
         const curImg = `.img${currentSlide.current}`
         const curDts = `.dts${currentSlide.current}`
 
